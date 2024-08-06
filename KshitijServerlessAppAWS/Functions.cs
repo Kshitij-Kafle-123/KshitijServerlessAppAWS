@@ -42,4 +42,14 @@ public class Functions
 
         return HttpResults.Ok("Hello AWS Serverless");
     }
+
+    [LambdaFunction]
+    [RestApi(LambdaHttpMethod.Get, "/")]
+    public IHttpResult GetName(
+        ILambdaContext context)
+    {
+        context.Logger.LogInformation("new information");
+
+        return HttpResults.Ok("What is your name");
+    }
 }
